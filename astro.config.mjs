@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import netlify from "@astrojs/netlify/functions";
 import image from "@astrojs/image";
 
 import netlify from "@astrojs/netlify/functions";
