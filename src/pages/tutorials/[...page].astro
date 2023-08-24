@@ -1,0 +1,49 @@
+---
+// component imports
+import MainLayout from "../../layouts/MainLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import Pagination from "../../components/Pagination.astro";
+import SideBar from "../../components/SideBar.astro";
+
+//uitls import
+import { formatBlogPosts } from "../../js/utils";
+
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await Astro.glob("./*.md");
+  //Set up params below to decide how posts are presented.
+  const formattedPosts = formatBlogPosts(allPosts, {
+    filterOutDrafts: false,
+    filterOutFuturePosts: false,
+    sortByDate: false,
+  });
+
+  return paginate(formattedPosts, { pageSize: 3 });
+}
+
+const { page } = Astro.props;
+---
+
+<MainLayout title="My Blog">
+  <div class="category-banner">
+    <h1 class="section-title">Tutorials</h1>
+    <p>
+      Below you'll find content about various aspects of Game Design. You can
+      navigate through the posts individually or sort by category
+    </p>
+  </div>
+  <section class="container" aria-label="New Posts">
+    <SideBar />
+    <div class="post-container">
+      {
+        page.data.map((post) => (
+          <PostCard
+            frontmatter={post.frontmatter}
+            url={post.url}
+            tagType="h2"
+          />
+        ))
+      }
+    </div>
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </section>
+</MainLayout>

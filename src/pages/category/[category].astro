@@ -1,0 +1,63 @@
+---
+// component imports
+import MainLayout from "../../layouts/MainLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import SideBar from "../../components/SideBar.astro";
+
+// utils
+import { slugify, formatBlogPosts } from "../../js/utils";
+
+export async function getStaticPaths() {
+  const allDesignPosts = await Astro.glob("../gamedesign/*.md");
+  const allTutPosts = await Astro.glob("../tutorials/*.md");
+  const allPosts = allDesignPosts.concat(allTutPosts);
+  const formattedPosts = formatBlogPosts(allPosts, {
+    filterOutDrafts: false,
+    filterOutFuturePosts: false,
+    sortByDate: true,
+  });
+  const allCats = [
+    ...new Set(formattedPosts.map((post) => post.frontmatter.category).flat()),
+  ];
+  return allCats.map((cat) => {
+    const catPosts = formattedPosts.filter(
+      (post) => post.frontmatter.category === cat
+    );
+    return {
+      params: { category: slugify(cat) },
+      props: {
+        catName: cat,
+        posts: catPosts,
+      },
+    };
+  });
+}
+
+const { category } = Astro.params;
+const { catName, posts } = Astro.props;
+
+// const catPosts = formattedPosts.filter(
+//   (post) => slugify(post.frontmatter.category) === category
+// );
+---
+
+<MainLayout title={catName}>
+  <div class="category-banner">
+    <h1 class="section-title">{catName}</h1>
+    <p>Everything I know about {catName}.</p>
+  </div>
+  <section class="container" aria-label={`Posts about ${catName}`}>
+    <SideBar />
+    <div class="post-container">
+      {
+        posts.map((post) => (
+          <PostCard
+            frontmatter={post.frontmatter}
+            url={post.url}
+            tagType="h2"
+          />
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>

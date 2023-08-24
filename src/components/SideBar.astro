@@ -1,0 +1,32 @@
+---
+// library imports
+import { Icon } from "astro-icon";
+
+// component imports
+import Link from "./Link.astro";
+
+// data imports
+import sideNavData from "../data/sideNavData";
+---
+
+<nav aria-label="SideBar">
+  <div class="sidenavbar">
+    <ul>
+      {
+        sideNavData.map((item) => (
+          <Link
+            text={item.name}
+            href={item.path}
+            style="side"
+            isFilled={false}
+            data-navLink
+          />
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<script>
+  import "../js/nav.js";
+</script>

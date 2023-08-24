@@ -1,0 +1,56 @@
+---
+//component imports
+import MainLayout from "../layouts/MainLayout.astro";
+import PostCard from "../components/PostCard.astro";
+
+//uitls import
+import { formatBlogPosts } from "../js/utils";
+const allDesignPosts = await Astro.glob("./gamedesign/*.md");
+const allTutPosts = await Astro.glob("./tutorials/*.md");
+
+//Set up params below to decide how posts are presented.
+const formattedDesignPosts = formatBlogPosts(allDesignPosts, {
+  filterOutDrafts: false,
+  filterOutFuturePosts: false,
+  sortByDate: true,
+  limit: 3,
+});
+
+const formattedTutorialPosts = formatBlogPosts(allTutPosts, {
+  filterOutDrafts: false,
+  filterOutFuturePosts: false,
+  sortByDate: true,
+  limit: 3,
+});
+---
+
+<MainLayout title="Index" description="Index Page">
+  <section class="home-container" aria-label="New Posts">
+    <h2 class="cat-header">Game Design</h2>
+    <div class="post-container">
+      {
+        formattedDesignPosts.map((post) => (
+          <PostCard
+            frontmatter={post.frontmatter}
+            url={post.url}
+            tagType="h3"
+          />
+        ))
+      }
+    </div>
+  </section>
+  <section class="home-container" aria-label="New Posts">
+    <h2 class="h1">Tutorials</h2>
+    <div class="post-container">
+      {
+        formattedTutorialPosts.map((post) => (
+          <PostCard
+            frontmatter={post.frontmatter}
+            url={post.url}
+            tagType="h3"
+          />
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>
