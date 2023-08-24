@@ -207,6 +207,14 @@ body {
   margin-top: 0.5em;
 }
 
+@media screen and (max-width: 500px) {
+  .cat-header {
+    font-size: var(--fs-xl);
+  }
+
+  /* And so on */
+}
+
 h1 span {
   color: hsl(var(--accent));
 }
@@ -400,14 +408,6 @@ button {
 .section-title {
   font-size: 2.5em;
   margin-top: 0.5em;
-}
-
-@media screen and (max-width: 500px) {
-  .section-title {
-    font-size: 2em;
-  }
-
-  /* And so on */
 }
 
 .navbar {
