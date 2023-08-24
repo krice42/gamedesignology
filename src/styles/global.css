@@ -402,6 +402,14 @@ button {
   margin-top: 0.5em;
 }
 
+@media screen and (max-width: 500px) {
+  .section-title {
+    font-size: 2em;
+  }
+
+  /* And so on */
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
