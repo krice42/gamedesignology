@@ -74,6 +74,7 @@ h6 {
   --fs-md: clamp(1.13rem, calc(1.04rem + 0.43vw), 1.38rem);
   --fs-lg: clamp(1.35rem, calc(1.22rem + 0.64vw), 1.72rem);
   --fs-xl: clamp(1.94rem, calc(1.69rem + 1.29vw), 2.69rem);
+  --fs-xxl: clamp(2.4rem, calc(2rem + 1.3vw), 3.5rem);
   --fs-2xl: clamp(2.8rem, calc(2.31rem + 2.43vw), 4.2rem);
 
   /* line heights */
@@ -209,7 +210,7 @@ body {
 
 @media screen and (max-width: 500px) {
   .cat-header {
-    font-size: var(--fs-xl);
+    font-size: var(--fs-xxl);
   }
 
   /* And so on */
