@@ -3,7 +3,7 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import PostCard from "../../components/PostCard.astro";
 import Pagination from "../../components/Pagination.astro";
-import SideBar from "../../components/SideBar.astro";
+import TutSideBar from "../../components/TutSideBar.astro";
 
 //uitls import
 import { formatBlogPosts } from "../../js/utils";
@@ -26,13 +26,13 @@ const { page } = Astro.props;
 <MainLayout title="My Blog">
   <div class="category-banner">
     <h1 class="section-title">Tutorials</h1>
-    <p>
+    <p class="banner-p">
       Below you'll find content about various aspects of Game Design. You can
       navigate through the posts individually or sort by category
     </p>
   </div>
-  <section class="container" aria-label="New Posts">
-    <SideBar />
+  <section class="container" aria-label="Game Design Page">
+    <TutSideBar class="sidenavcontainer" />
     <div class="post-container">
       {
         page.data.map((post) => (

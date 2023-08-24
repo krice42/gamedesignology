@@ -1,0 +1,29 @@
+---
+// component imports
+import Link from "./Link.astro";
+
+// data imports
+import sideNavTutData from "../data/sideNavTutData";
+---
+
+<nav aria-label="SideBar">
+  <div class="sidenavbar">
+    <ul>
+      {
+        sideNavTutData.map((item) => (
+          <Link
+            text={item.name}
+            href={item.path}
+            style="side"
+            isFilled={false}
+            data-navLink
+          />
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<script>
+  import "../js/nav.js";
+</script>
