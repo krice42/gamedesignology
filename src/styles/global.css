@@ -374,6 +374,28 @@ button {
     gap: var(--space-sm);
   }
 }
+@media screen and (max-width: 500px) {
+  [aria-label="SideBar"] {
+    float: none;
+    width: 100%;
+    margin-bottom: 10%;
+    margin-top: 1em;
+    margin-right: 0em;
+    overflow-y: auto;
+  }
+}
+.sidenavcontainer {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 500px) {
+  .sidenavcontainer {
+    background-color: white;
+  }
+
+  /* And so on */
+}
 
 .section-title {
   font-size: 2.5em;
@@ -478,16 +500,19 @@ button {
 .post-container {
   margin-block: var(--space-md);
   display: flex;
+  flex-direction: row;
+
   gap: var(--space-md);
-  align-items: flex-start;
+}
 
-  @media --md {
-    grid-template-columns: 2fr 2fr;
+@media screen and (max-width: 500px) {
+  .post-container {
+    flex-direction: column;
+    justify-content: center;
   }
-
-  @media --lg {
-    grid-template-columns: 2fr 2fr 2fr;
-  }
+  /* body {
+    margin: 5rem;
+  } */
 }
 
 .badge {
@@ -537,14 +562,6 @@ button {
 
 /* cards */
 .card {
-  display: grid;
-  /* background-color: hsl(var(--muted)); */
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
-  /* box-shadow: var(--shadow-sm); */
-  width: 32%;
-  /* margin-bottom: 2em; */
-
   & .badge {
     --accent: var(--txt);
   }
@@ -715,6 +732,12 @@ main {
   display: grid;
   background-color: #ff8c00;
   border-top: solid 4px grey;
+}
+
+@media screen and (max-width: 500px) {
+  .category-banner {
+    padding-left: 1em;
+  }
 }
 
 .temp-logo {
