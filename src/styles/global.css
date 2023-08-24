@@ -257,7 +257,7 @@ button {
     color var(--transition-ease-fast), box-shadow var(--transition-squish-slow);
 
   &:hover {
-    color: hsl(var(--accent));
+    color: #ff8c00;
   }
 
   &:focus {
@@ -309,6 +309,7 @@ button {
     --type: hsl(var(--txt));
     border-bottom: 1px solid;
     width: 100%;
+    text-shadow: 1px 1px 2px black;
   }
 
   &.secondary {
@@ -326,7 +327,7 @@ button {
   }
 
   &[aria-current="page"] {
-    --type: hsl(var(--accent));
+    color: #ff8c00;
   }
 
   &:hover {
@@ -409,6 +410,7 @@ button {
 .section-title {
   font-size: 2.5em;
   margin-top: 0.5em;
+  color: white;
 }
 
 .navbar {
@@ -546,9 +548,11 @@ button {
 
 .category-badge {
   padding: 4px 10px;
-  background-color: hsl(var(--accent));
+  background-color: #ff8c00;
+  box-shadow: var(--shadow-md);
+  text-shadow: 1px 1px 2px black;
   border-radius: var(--radius-sm);
-  color: hsl(var(--muted));
+  color: white;
   text-decoration: none;
   letter-spacing: 0.054em;
   text-transform: uppercase;
@@ -599,6 +603,11 @@ button {
   font-size: 1.5rem;
   color: orange;
   display: block;
+
+  &:hover {
+    color: white;
+    opacity: 0.8;
+  }
 }
 
 /* posts */
@@ -741,6 +750,7 @@ main {
   display: grid;
   background-color: #ff8c00;
   border-top: solid 4px grey;
+  text-shadow: 1px 1px 2px black;
 }
 
 @media screen and (max-width: 500px) {
@@ -756,4 +766,5 @@ main {
 
 .banner-p {
   padding-bottom: 3em;
+  color: white;
 }
