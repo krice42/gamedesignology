@@ -7,6 +7,7 @@ import SideBar from "../../components/SideBar.astro";
 //uitls import
 import { formatBlogPosts } from "../../js/utils";
 
+export const prerender = true;
 export async function getStaticPaths({ paginate }) {
   const allPosts = await Astro.glob("./*.md");
   //Set up params below to decide how posts are presented.

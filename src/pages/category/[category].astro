@@ -6,7 +6,7 @@ import SideBar from "../../components/SideBar.astro";
 
 // utils
 import { slugify, formatBlogPosts } from "../../js/utils";
-
+export const prerender = true;
 export async function getStaticPaths() {
   const allDesignPosts = await Astro.glob("../gamedesign/*.md");
   const allTutPosts = await Astro.glob("../tutorials/*.md");
