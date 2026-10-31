@@ -1,0 +1,47 @@
+---
+// component imports
+import MainLayout from "../../layouts/MainLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import Pagination from "../../components/Pagination.astro";
+import TutSideBar from "../../components/TutSideBar.astro";
+
+//uitls import
+import { formatBlogPosts } from "../../js/utils";
+export const prerender = true;
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await Astro.glob("./*.md");
+  //Set up params below to decide how posts are presented.
+  const formattedPosts = formatBlogPosts(allPosts, {
+    filterOutDrafts: false,
+    filterOutFuturePosts: false,
+    sortByDate: false,
+  });
+
+  return paginate(formattedPosts, { pageSize: 3 });
+}
+
+const { page } = Astro.props;
+---
+
+<MainLayout title="My Blog">
+  <div class="category-banner">
+    <h1 class="section-title">Kory Rice</h1>
+    <p class="banner-p">
+      Technically A Game Designer
+    </p>
+  </div>
+  <section class="container" aria-label="About Me Page">
+    <div class="post-container">
+      {
+        page.data.map((post) => (
+          <PostCard
+            frontmatter={post.frontmatter}
+            url={post.url}
+            tagType="h2"
+          />
+        ))
+      }
+    </div>
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </section>
+</MainLayout>
