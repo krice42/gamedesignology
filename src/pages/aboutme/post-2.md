@@ -4,7 +4,7 @@ layout: "../../layouts/TutorialPostLayout.astro"
 title: Dungeons & Dragons Online
 date: 2026-10-30
 author: Kory Rice
-image: { src: "/images/post-1.jpg", alt: "A picture of a coder" }
+image: { src: "/images/ddo_cover.png", alt: "A picture of a coder" }
 # For SEO
 description: Have you ever wondered what the most important items of life are? Well, wonder no more!
 draft: false
